@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_gravity="bottom"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
 
     <!--<net.osmand.plus.quickaction.QuickActionsWidget
         android:id="@+id/quick_action_widget"
@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         tools:visibility="visible"
         android:visibility="gone"/>
-
     <FrameLayout
         android:id="@+id/map_quick_actions_button_container"
         android:layout_width="match_parent"
@@ -20,7 +19,6 @@
         android:layout_weight="1"
         android:padding="8dp"
         android:animateLayoutChanges="true">
-
         <ImageButton
             android:id="@+id/map_quick_actions_button"
             android:layout_width="@dimen/map_button_size"
@@ -31,7 +29,6 @@
             android:visibility="gone"
             tools:visibility="visible"
             tools:src="@drawable/ic_action_test_light"/>
-
     </FrameLayout>-->
 
     <FrameLayout
@@ -197,14 +194,42 @@
             android:layout_marginBottom="@dimen/map_button_margin"
             android:layout_marginRight="@dimen/map_button_margin">
 
-            <ImageButton
-                android:id="@+id/map_my_location_button"
-                android:layout_width="@dimen/map_button_size"
-                android:layout_height="@dimen/map_button_size"
+            <!--<ImageButton-->
+                <!--android:id="@+id/map_my_location_button"-->
+                <!--android:layout_width="@dimen/map_button_size"-->
+                <!--android:layout_height="@dimen/map_button_size"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:background="@drawable/btn_circle"-->
+                <!--android:contentDescription="@string/shared_string_my_location"-->
+                <!--tools:src="@drawable/ic_action_test_light"/>-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/btn_circle"
-                android:contentDescription="@string/shared_string_my_location"
-                tools:src="@drawable/ic_action_test_light"/>
+                android:layout_marginLeft="@dimen/map_button_spacing"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="@dimen/map_button_size"
+                    android:layout_height="@dimen/map_button_size"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/btn_circle_blue_n"
+                    android:contentDescription="@string/shared_string_my_location"
+                    android:onClick="openIonicApp" />
+
+                <ImageButton
+                    android:id="@+id/map_my_location_button"
+                    android:layout_width="@dimen/map_button_size"
+                    android:layout_height="@dimen/map_button_size"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/map_button_spacing"
+                    android:background="@drawable/btn_circle"
+                    android:contentDescription="@string/shared_string_my_location"
+                    tools:src="@drawable/ic_action_test_light" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -241,10 +266,10 @@
             tools:visibility="gone"/>
 
         <include layout="@layout/move_marker_bottom_sheet"
-                 tools:visibility="gone"/>
+            tools:visibility="gone"/>
 
         <include layout="@layout/add_gpx_point_bottom_sheet"
-                 tools:visibility="gone"/>
+            tools:visibility="gone"/>
 
         <FrameLayout
             android:id="@+id/bottomFragmentContainer"
