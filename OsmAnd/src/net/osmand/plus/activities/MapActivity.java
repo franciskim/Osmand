@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -231,6 +232,11 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
     private static final String TAG = "MapActivity";
 
 
+    private TextView tvPassengers;
+    private ImageButton ibPassengerIncrease, ibPassengerDecrease;
+    private int numberOfPassengers = 0;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(AndroidUiHelper.getScreenOrientation(this));
@@ -250,6 +256,12 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
         // Full screen is not used here
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
+
+
+        tvPassengers = (TextView) this.findViewById(R.id.tvPassengers);
+        ibPassengerIncrease = (ImageButton) this.findViewById(R.id.ibPassengerIncrease);
+        ibPassengerDecrease = (ImageButton) this.findViewById(R.id.ibPassengerDecrease);
+
 
         if (Build.VERSION.SDK_INT >= 21) {
             enterToFullScreen();
@@ -373,6 +385,64 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 //        } else {
 //            copyFile();
 //        }
+
+
+//        tvPassengers.setText(numberOfPassengers);
+
+        ibPassengerIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numberOfPassengers++;
+                if (numberOfPassengers > 0)
+                    ibPassengerDecrease.setEnabled(true);
+                tvPassengers.setText(numberOfPassengers + "");
+            }
+        });
+
+        ibPassengerDecrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (numberOfPassengers > 0)
+                    numberOfPassengers--;
+                if (numberOfPassengers == 0)
+                    ibPassengerDecrease.setEnabled(false);
+                tvPassengers.setText(numberOfPassengers + "");
+            }
+        });
+
+        findViewById(R.id.btnStartTrip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(app, "Start Trip", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        findViewById(R.id.btnEndTrip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+//                startActivity(browserIntent);
+//                Toast.makeText(app, "End Trip", Toast.LENGTH_SHORT).show();
+
+                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("io.gameslinq.fleet.app");
+                if (launchIntent != null) {
+                    //pointer check in case package name was found
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                    browserIntent.setData(Uri.parse("fleetosmand://passengers=" + numberOfPassengers));
+                    startActivity(browserIntent);
+                } else {
+                    //pointer check in case package name was not found
+                    launchIntent = getPackageManager().getLaunchIntentForPackage("io.driverapp.metro");
+
+                    if (launchIntent != null) {
+                        startActivity(launchIntent);
+                    } else {
+                        Toast.makeText(app, "App not found!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
     }
 
     public void copyFile() {
@@ -2242,13 +2312,21 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 
     public void openIonicApp(View view) {
         //replace packageName with your package
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("io.driverapp.metro");
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("io.gameslinq.fleet.app");
         if (launchIntent != null) {
             //pointer check in case package name was found
-            startActivity(launchIntent);
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+            browserIntent.setData(Uri.parse("fleetosmand://passengers=" + numberOfPassengers));
+            startActivity(browserIntent);
         } else {
             //pointer check in case package name was not found
-            Toast.makeText(app, "App not found!", Toast.LENGTH_SHORT).show();
+            launchIntent = getPackageManager().getLaunchIntentForPackage("io.driverapp.metro");
+
+            if (launchIntent != null) {
+                startActivity(launchIntent);
+            } else {
+                Toast.makeText(app, "App not found!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

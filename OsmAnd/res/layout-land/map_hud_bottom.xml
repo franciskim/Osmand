@@ -1,10 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_gravity="bottom"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="start number of passengers"
+            android:textAllCaps="true"
+            android:textColor="@color/color_black"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="11">
+
+            <Button
+                android:id="@+id/btnStartTrip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/btn_back_border"
+                android:text="Start"
+                android:textColor="@color/color_black" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/ibPassengerDecrease"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/minus" />
+
+            <TextView
+                android:id="@+id/tvPassengers"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/color_black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/ibPassengerIncrease"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/plus" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnEndTrip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/btn_back_border"
+                android:text="End"
+                android:textColor="@color/color_black" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bottom_controls_container"
@@ -32,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/warnings_limit"/>
+                    android:src="@drawable/warnings_limit" />
 
                 <TextView
                     android:id="@+id/map_alarm_warning_text"
@@ -42,7 +123,7 @@
                     android:textColor="@color/color_black"
                     android:textSize="@dimen/map_alarm_text_size"
                     android:textStyle="bold"
-                    tools:text="60"/>
+                    tools:text="60" />
 
                 <TextView
                     android:id="@+id/map_alarm_warning_text_bottom"
@@ -53,7 +134,7 @@
                     android:textSize="@dimen/map_alarm_bottom_text_size"
                     android:textStyle="bold"
                     tools:text="1.2 km"
-                    tools:textColor="@color/color_black"/>
+                    tools:textColor="@color/color_black" />
             </FrameLayout>
 
             <TextView
@@ -65,7 +146,7 @@
                 android:layout_marginLeft="@dimen/map_button_margin"
                 android:gravity="center_horizontal"
                 android:textSize="@dimen/map_button_text_size"
-                tools:text="13.88"/>
+                tools:text="13.88" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -78,7 +159,7 @@
                     layout="@layout/recording_note_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|left"/>
+                    android:layout_gravity="bottom|left" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -95,7 +176,7 @@
                         android:layout_height="@dimen/map_button_size"
                         android:background="@drawable/btn_round"
                         android:contentDescription="@string/backToMenu"
-                        tools:src="@drawable/ic_action_test_light"/>
+                        tools:src="@drawable/ic_action_test_light" />
 
                     <ImageButton
                         android:id="@+id/map_route_info_button"
@@ -104,7 +185,7 @@
                         android:layout_marginLeft="@dimen/map_button_spacing_land"
                         android:background="@drawable/btn_round"
                         android:contentDescription="@string/layer_route"
-                        tools:src="@drawable/ic_action_test_light"/>
+                        tools:src="@drawable/ic_action_test_light" />
 
                     <ImageButton
                         android:id="@+id/snap_to_road_image_button"
@@ -113,7 +194,7 @@
                         android:layout_gravity="bottom"
                         android:background="@drawable/btn_circle"
                         android:visibility="gone"
-                        tools:src="@drawable/ic_action_test_light"/>
+                        tools:src="@drawable/ic_action_test_light" />
                 </LinearLayout>
             </LinearLayout>
         </FrameLayout>
@@ -146,7 +227,7 @@
                         android:gravity="center_horizontal"
                         android:lineSpacingMultiplier="0.9"
                         android:textSize="@dimen/map_widget_text_size_small"
-                        tools:text="100 m"/>
+                        tools:text="100 m" />
 
                     <TextView
                         android:id="@+id/map_ruler_text"
@@ -156,7 +237,7 @@
                         android:gravity="center_horizontal"
                         android:lineSpacingMultiplier="0.9"
                         android:textSize="@dimen/map_widget_text_size_small"
-                        tools:text="100 m"/>
+                        tools:text="100 m" />
                 </FrameLayout>
 
                 <ImageView
@@ -164,7 +245,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:background="@drawable/ruler"/>
+                    android:background="@drawable/ruler" />
             </FrameLayout>
 
             <!-- TRANSPARENCY -->
@@ -181,7 +262,7 @@
                     android:id="@+id/map_transparency_seekbar"
                     android:layout_width="@dimen/map_trans_seek_size"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
 
                 <ImageButton
                     android:id="@+id/map_transparency_hide"
@@ -190,7 +271,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/btn_circle_transparent"
                     android:contentDescription="@string/shared_string_hide"
-                    android:src="@drawable/headliner_close"/>
+                    android:src="@drawable/headliner_close" />
             </LinearLayout>
 
             <!-- CONTEXT MENU -->
@@ -208,22 +289,21 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:gravity="center">
-                </TextView>
+                    android:gravity="center"></TextView>
 
                 <ImageButton
                     android:layout_width="@dimen/map_address_height"
                     android:layout_height="@dimen/map_address_height"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/btn_circle_transparent"
-                    tools:src="@drawable/ic_action_test_light"/>
+                    tools:src="@drawable/ic_action_test_light" />
 
                 <ImageButton
                     android:layout_width="@dimen/map_address_height"
                     android:layout_height="@dimen/map_address_height"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/btn_circle_transparent"
-                    tools:src="@drawable/ic_action_test_light"/>
+                    tools:src="@drawable/ic_action_test_light" />
             </LinearLayout>
         </FrameLayout>
 
@@ -237,14 +317,43 @@
             android:layout_marginLeft="@dimen/map_button_spacing_land"
             android:layout_marginRight="@dimen/map_button_margin">
 
-            <ImageButton
-                android:id="@+id/map_my_location_button"
-                android:layout_width="@dimen/map_button_size"
-                android:layout_height="@dimen/map_button_size"
+            <!--<ImageButton-->
+            <!--android:id="@+id/map_my_location_button"-->
+            <!--android:layout_width="@dimen/map_button_size"-->
+            <!--android:layout_height="@dimen/map_button_size"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:background="@drawable/btn_circle"-->
+            <!--android:contentDescription="@string/shared_string_my_location"-->
+            <!--tools:src="@drawable/ic_action_test_light"/>-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/btn_circle"
-                android:contentDescription="@string/shared_string_my_location"
-                tools:src="@drawable/ic_action_test_light"/>
+                android:layout_marginLeft="@dimen/map_button_spacing"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="@dimen/map_button_size"
+                    android:layout_height="@dimen/map_button_size"
+                    android:layout_gravity="bottom"
+                    android:visibility="gone"
+                    android:background="@drawable/go_back"
+                    android:contentDescription="@string/shared_string_my_location"
+                    android:onClick="openIonicApp" />
+
+                <ImageButton
+                    android:id="@+id/map_my_location_button"
+                    android:layout_width="@dimen/map_button_size"
+                    android:layout_height="@dimen/map_button_size"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/map_button_spacing"
+                    android:background="@drawable/btn_circle"
+                    android:contentDescription="@string/shared_string_my_location"
+                    tools:src="@drawable/ic_action_test_light" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -259,7 +368,7 @@
                     android:layout_height="@dimen/map_button_size"
                     android:background="@drawable/btn_circle"
                     android:contentDescription="@string/zoomIn"
-                    tools:src="@drawable/ic_action_test_light"/>
+                    tools:src="@drawable/ic_action_test_light" />
 
                 <ImageButton
                     android:id="@+id/map_zoom_out_button"
@@ -268,7 +377,7 @@
                     android:layout_marginTop="@dimen/map_button_spacing_land"
                     android:background="@drawable/btn_circle"
                     android:contentDescription="@string/zoomOut"
-                    tools:src="@drawable/ic_action_test_light"/>
+                    tools:src="@drawable/ic_action_test_light" />
             </LinearLayout>
         </LinearLayout>
 
@@ -279,18 +388,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
     <include
         layout="@layout/add_gpx_point_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/bottomFragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
