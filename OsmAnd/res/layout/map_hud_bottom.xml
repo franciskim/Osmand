@@ -54,14 +54,14 @@
             android:orientation="horizontal"
             android:weightSum="11">
 
-            <Button
-                android:id="@+id/btnStartTrip"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@drawable/btn_back_border"
-                android:text="Start"
-                android:textColor="@color/color_black" />
+            <!--<Button-->
+            <!--android:id="@+id/btnStartTrip"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="3"-->
+            <!--android:background="@color/color_start"-->
+            <!--android:text="Start Trip"-->
+            <!--android:textColor="@color/color_white" />-->
 
             <View
                 android:layout_width="0dp"
@@ -97,10 +97,23 @@
                 android:layout_weight="1" />
 
             <Button
+                android:id="@+id/btnStartTrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@color/color_start"
+                android:text="Start Trip"
+                android:textColor="@color/color_white" />
+
+            <Button
                 android:id="@+id/btnEndTrip"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
+
+                android:visibility="gone"
                 android:background="@drawable/btn_back_border"
                 android:text="End"
                 android:textColor="@color/color_black" />

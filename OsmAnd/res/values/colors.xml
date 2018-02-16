@@ -160,6 +160,7 @@
 	<!-- Old dialogs colors -->
 	<color name="color_white">#FFF</color>
 	<color name="color_black">#000</color>
+	<color name="color_start">#9EC705</color>
 
 	<color name="row_selection_color">#CC33BBE0</color>
 
