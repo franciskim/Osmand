@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -38,6 +39,7 @@ import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -201,8 +203,11 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
     // App variables
     private OsmandApplication app;
     private OsmandSettings settings;
+    private Button btnStartTrip;
+    private Button btnEndTrip;
 
     private boolean landscapeLayout;
+    private boolean isStartTrip = true;
 
     private Dialog progressDlg = null;
 
@@ -413,7 +418,19 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
         findViewById(R.id.btnStartTrip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(app, "Start Trip", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(app, "Start Trip", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(app, "Start Trip", Toast.LENGTH_SHORT).show();
+                if(isStartTrip){
+                    isStartTrip = false;
+                    btnStartTrip.setBackgroundColor(Color.parseColor("#E9B112"));
+                    btnStartTrip.setText("End Trip");
+
+                }else{
+                    isStartTrip = true;
+                    btnEndTrip.performClick();
+//                    btnStartTrip.setBackgroundColor(Color.parseColor("#9EC705"));
+//                    btnStartTrip.setText("Start Trip");
+                }
             }
         });
 
